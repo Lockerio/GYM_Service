@@ -1,6 +1,6 @@
 import uuid
 
-from sqlalchemy import Boolean, ForeignKey
+from sqlalchemy import Boolean, ForeignKey, Integer
 from sqlalchemy import Column
 from sqlalchemy import String
 from sqlalchemy.dialects.postgresql import UUID
@@ -12,7 +12,7 @@ Base = declarative_base()
 class Role(Base):
     __tablename__ = "roles"
 
-    role_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    role_id = Column(Integer(), primary_key=True, autoincrement=True)
     title = Column(String, nullable=False)
 
 
