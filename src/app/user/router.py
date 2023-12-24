@@ -7,9 +7,13 @@ user_router = APIRouter(
     tags=["Pages"]
 )
 
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory="app/templates")
 
 
 @user_router.get("/")
 def get_base_page(request: Request):
-    return templates.TemplateResponse("base.html", {"request": request})
+    user = {
+        "first_name": "gui",
+        "last_name": "petrov"
+    }
+    return templates.TemplateResponse("user_profile.html", {"request": request, "user": user})
