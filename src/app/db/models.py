@@ -15,6 +15,8 @@ class Role(Base):
     role_id = Column(Integer(), primary_key=True, autoincrement=True)
     title = Column(String, nullable=False)
 
+    users = relationship('User', back_populates='role')
+
 
 class User(Base):
     __tablename__ = "users"

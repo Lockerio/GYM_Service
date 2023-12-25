@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Request, Depends
+from fastapi import APIRouter, Request, Depends, Form
 from sqlalchemy.ext.asyncio import AsyncSession
 from starlette.templating import Jinja2Templates
 
@@ -28,8 +28,22 @@ async def create(request: Request):
     return templates.TemplateResponse("user_create.html", {"request": request})
 
 
-@user_router.get("/created")
-async def created(request: Request, body: UserCreate, session: AsyncSession = Depends(get_db)):
+@user_router.post("/created")
+async def created(
+        request: Request,
+        first_name: str = Form(...),
+        last_name: str = Form(...),
+        father_name: str = Form(...),
+        password: str = Form(...),
+        session: AsyncSession = Depends(get_db)
+):
+    body = UserCreate(
+        first_name=first_name,
+        last_name=last_name,
+        father_name=father_name,
+        password=password,
+    )
+    print(body.model_dump())
     async with session.begin():
         user_dao = UserDAO(session)
 
