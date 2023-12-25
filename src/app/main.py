@@ -5,7 +5,7 @@ from starlette.staticfiles import StaticFiles
 from app.user.router import user_router
 
 app = FastAPI(
-    title="GYM Service"
+    title="GYM Service", debug=True
 )
 
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
