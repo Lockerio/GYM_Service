@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from starlette.templating import Jinja2Templates
 
 from app.db.dal.user_dao import UserDAO
-from app.db.session import get_db
+from app.db.session import get_session
 from app.hashing import Hasher
 from app.user.schemas import UserCreate
 
@@ -35,7 +35,7 @@ async def created(
         last_name: str = Form(...),
         father_name: str = Form(...),
         password: str = Form(...),
-        session: AsyncSession = Depends(get_db)
+        session: AsyncSession = Depends(get_session)
 ):
     body = UserCreate(
         first_name=first_name,
@@ -43,7 +43,7 @@ async def created(
         father_name=father_name,
         password=password,
     )
-    print(body.model_dump())
+
     async with session.begin():
         user_dao = UserDAO(session)
 

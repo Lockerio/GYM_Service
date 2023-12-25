@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='user.css') }}">
+    <title>Аккаунт создан!</title>
 </head>
 <body>
-    Пользователь создан!
+    <header>
+        <h1>Добро пожаловать, {{ user.first_name }} {{ user.father_name }}!</h1>
+    </header>
+
+    <div class="profile-container">
+        <div class="user-info">
+            <p class="welcome-message">Ваш аккаунт был успешно создан.</p>
+            <p class="login-message">Авторизуйтесь <a href="#">здесь</a>.</p>
+        </div>
+    </div>
 </body>
 </html>
