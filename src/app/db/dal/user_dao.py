@@ -17,12 +17,14 @@ class UserDAO:
         last_name: str,
         father_name: str,
         hashed_password: str,
+        email: str,
     ) -> User:
         new_user = User(
             first_name=first_name,
             last_name=last_name,
             father_name=father_name,
             hashed_password=hashed_password,
+            email=email,
         )
         self.db_session.add(new_user)
         await self.db_session.flush()

@@ -27,6 +27,7 @@ class User(Base):
     father_name = Column(String, nullable=False)
     role_id = Column(ForeignKey('roles.role_id'), nullable=False, default=1)
     is_active = Column(Boolean(), default=True)
+    email = Column(String, nullable=False, unique=True)
     hashed_password = Column(String, nullable=False)
 
     role = relationship('Role', back_populates='users')

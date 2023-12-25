@@ -35,6 +35,7 @@ async def created(
         last_name: str = Form(...),
         father_name: str = Form(...),
         password: str = Form(...),
+        email: str = Form(...),
         session: AsyncSession = Depends(get_session)
 ):
     body = UserCreate(
@@ -42,6 +43,7 @@ async def created(
         last_name=last_name,
         father_name=father_name,
         password=password,
+        email=email,
     )
 
     async with session.begin():
@@ -52,6 +54,7 @@ async def created(
             last_name=body.last_name,
             father_name=body.father_name,
             hashed_password=Hasher.get_password_hash(body.password),
+            email=body.email,
         )
 
     return templates.TemplateResponse("user_created.html", {"request": request, "user": user})
