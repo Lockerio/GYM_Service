@@ -2,6 +2,7 @@ from uuid import UUID
 
 from fastapi import APIRouter, Request, Depends, Form, Path
 from sqlalchemy.ext.asyncio import AsyncSession
+from starlette.routing import NoMatchFound
 from starlette.templating import Jinja2Templates
 
 from app.db.dal.user_dao import UserDAO
@@ -24,7 +25,10 @@ async def user_profile(request: Request, user_uuid: UUID = Path(...), session: A
         user = await user_dao.get_user_by_id(
             user_id=user_uuid
         )
-    return templates.TemplateResponse("user_profile.html", {"request": request, "user": user})
+
+    if user:
+        return templates.TemplateResponse("user_profile.html", {"request": request, "user": user})
+    return templates.TemplateResponse("user_not_found.html", {"request": request})
 
 
 @user_router.get("/create")
