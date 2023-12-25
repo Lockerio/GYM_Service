@@ -13,10 +13,8 @@
 
     <div class="profile-container">
         <div class="user-info">
-            <h2>User Name</h2>
-            <p>Email: user@example.com</p>
-            <p>Location: City, Country</p>
-            <p>About Me: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <h2>{{ user.last_name }} {{ user.first_name }} {{ user.father_name }}</h2>
+            <p>Email: {{ user.email }}</p>
         </div>
     </div>
 </body>

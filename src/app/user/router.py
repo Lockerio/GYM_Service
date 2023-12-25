@@ -1,4 +1,6 @@
-from fastapi import APIRouter, Request, Depends, Form
+from uuid import UUID
+
+from fastapi import APIRouter, Request, Depends, Form, Path
 from sqlalchemy.ext.asyncio import AsyncSession
 from starlette.templating import Jinja2Templates
 
@@ -14,12 +16,14 @@ user_router = APIRouter(
 templates = Jinja2Templates(directory="app/user/templates")
 
 
-@user_router.get("/")
-async def user_profile(request: Request):
-    user = {
-        "first_name": "gui",
-        "last_name": "petrov"
-    }
+@user_router.get("/{user_uuid}")
+async def user_profile(request: Request, user_uuid: UUID = Path(...), session: AsyncSession = Depends(get_session)):
+    async with session.begin():
+        user_dao = UserDAO(session)
+
+        user = await user_dao.get_user_by_id(
+            user_id=user_uuid
+        )
     return templates.TemplateResponse("user_profile.html", {"request": request, "user": user})
 
 
