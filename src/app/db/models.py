@@ -23,7 +23,7 @@ class User(Base):
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=False)
     father_name = Column(String, nullable=False)
-    role_id = Column(ForeignKey('roles.role_id'), nullable=False, unique=True)
+    role_id = Column(ForeignKey('roles.role_id'), nullable=False, default=1)
     is_active = Column(Boolean(), default=True)
     hashed_password = Column(String, nullable=False)
 

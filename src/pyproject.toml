@@ -14,6 +14,8 @@ psycopg2 = "^2.9.9"
 alembic = "^1.13.1"
 uvicorn = "^0.25.0"
 jinja2 = "^3.1.2"
+bcrypt = "^4.1.2"
+passlib = "^1.7.4"
 
 
 [build-system]

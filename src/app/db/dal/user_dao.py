@@ -16,7 +16,6 @@ class UserDAO:
         first_name: str,
         last_name: str,
         father_name: str,
-        role_id: int,
         hashed_password: str,
     ) -> User:
         new_user = User(
@@ -24,7 +23,6 @@ class UserDAO:
             last_name=last_name,
             father_name=father_name,
             hashed_password=hashed_password,
-            role_id=role_id,
         )
         self.db_session.add(new_user)
         await self.db_session.flush()
