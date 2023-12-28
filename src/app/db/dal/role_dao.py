@@ -1,6 +1,6 @@
 from typing import Union
 
-from sqlalchemy import update, and_, select
+from sqlalchemy import update, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.models import Role
