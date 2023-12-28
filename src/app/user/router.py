@@ -2,7 +2,6 @@ from uuid import UUID
 
 from fastapi import APIRouter, Request, Depends, Form, Path
 from sqlalchemy.ext.asyncio import AsyncSession
-from starlette.routing import NoMatchFound
 from starlette.templating import Jinja2Templates
 
 from app.db.dal.user_dao import UserDAO
