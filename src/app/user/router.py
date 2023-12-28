@@ -35,7 +35,7 @@ async def create(request: Request):
     return templates.TemplateResponse("user_create.html", {"request": request})
 
 
-@user_router.post("/created")
+@user_router.post("/account_created")
 async def created(
         request: Request,
         first_name: str = Form(...),

@@ -18,7 +18,7 @@ async def create(request: Request):
     return templates.TemplateResponse("role_create.html", {"request": request})
 
 
-@role_router.post("/created")
+@role_router.post("/role_created")
 async def created(
         request: Request,
         title: str = Form(...),

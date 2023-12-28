@@ -12,7 +12,7 @@ header {
     text-align: center;
 }
 
-.profile-container {
+.role-container {
     max-width: 400px;
     margin: 20px auto;
     background-color: #fff;
@@ -21,7 +21,7 @@ header {
     border-radius: 8px;
 }
 
-.user-form {
+.role-form {
     display: flex;
     flex-direction: column;
 }
@@ -58,3 +58,4 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #555;
 }
+
