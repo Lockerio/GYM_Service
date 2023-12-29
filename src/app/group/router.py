@@ -23,10 +23,12 @@ async def create(request: Request):
 async def created(
         request: Request,
         title: str = Form(...),
+        customer_amount: int = Form(...),
         session: AsyncSession = Depends(get_session)
 ):
     body = RoleCreateOrUpdate(
         title=title,
+        customer_amount=customer_amount
     )
 
     async with session.begin():
