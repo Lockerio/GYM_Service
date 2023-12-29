@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='role/role.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='group/group.css') }}">
     <title>Create Role</title>
 </head>
 <body>
@@ -11,15 +11,20 @@
         <h1>Create role</h1>
     </header>
 
-    <div class="role-container">
-        <form method="post" action="{{ url_for('role_created') }}" class="role-form">
+    <div class="group-container">
+        <form method="post" action="{{ url_for('group_created') }}" class="group-form">
             <div class="form-group">
                 <label for="title">Title:</label>
                 <input type="text" id="title" name="title" required>
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Create Role">
+                <label for="title">Customer amount:</label>
+                <input type="text" id="customer_amount" name="customer_amount" required>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create Group">
             </div>
         </form>
     </div>
